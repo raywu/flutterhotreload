@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(new MyApp());
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.pink,
       ),
       home: new MyHomePage(title: 'FD Home Page'),
     );
@@ -43,7 +44,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 100;
+  static final rand = new Random();
+  int _counter = rand.nextInt(200);
 
   void _incrementCounter() {
     setState(() {
@@ -52,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter += rand.nextInt(50);
       print('counting $_counter');
     });
   }
@@ -88,14 +90,14 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
               'You pushed:',
             ),
             new Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.display3,
             ),
             new Text(
               'times!',
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: new FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: new Icon(Icons.add_circle_outline),
+        child: new Icon(Icons.android),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
